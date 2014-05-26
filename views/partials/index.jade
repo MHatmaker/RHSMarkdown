@@ -1,0 +1,19 @@
+//
+    p Partials : There are some documents somewhere {{docs.length}} documents
+
+//
+    script.
+        $(function() {
+            $('nav#menu').mmenu();
+        });
+    div#header
+        a(href="#menu")
+        
+    nav#menu
+        ul
+            div(ng-repeat='docmd in docs')
+                li 
+                    a(href='/showDoc/{{docmd._id}}') {{docmd.Doc}}
+                  
+  
+

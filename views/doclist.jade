@@ -1,0 +1,13 @@
+extends layout
+
+block content
+  div
+    h1.
+      Documents List From MongoDB
+    ul
+      //each docmd, i in doclist
+      div(ng-repeat='docmd in doclist')
+        li
+          a(href='/MarkdownSimple/readDoc/{{docmd.Doc}}')= docmd.Doc
+  script(src='js/lib/angular/angular.js')
+

@@ -1,0 +1,38 @@
+extends layout
+
+block content
+    div#page 
+        h2(style='text-align: center') PixPoint and GeoVideo Toolbar Projects
+        
+    div(ng-controller="DocsCtrl")
+        div(ng-class = "svg-menu"
+            ng-click="isCollapsed = !isCollapsed")
+                img(src="http://f.cl.ly/items/1U2c3b1215383h3a2T2r/icon-menu.svg")
+                Documents Menu
+        
+        table
+            tbody
+                tr
+                    td
+                        div(collapse="isCollapsed") 
+                            div Currently {{docs.length}} documents 
+                                ul
+                                    li(ng-repeat='docmd in docs')
+                                        a(href='/showDoc/{{docmd._id}}') {{docmd.Doc}}
+    
+                    td
+                        div(ng-view)
+        
+    script(src='/javascripts/lib/angular/angular.js')
+    script(src='/javascripts/lib/angular/angular-route.js')
+    script(src='/javascripts/lib/angular/ui-bootstrap-tpls-0.11.0.min.js')
+    script(src='/javascripts/DocListAppNG.js')
+     
+    //
+        script.
+            function CollapseDemoCtrl($scope) {
+              $scope.isCollapsed = false;
+            }
+    
+        
+
