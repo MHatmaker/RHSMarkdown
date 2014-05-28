@@ -20,3 +20,29 @@
 5. > db.docCollection.find().pretty()
 6. > db.docCollection.remove({"_id": ObjectId("5360502b6611df8c65cdbc5d")});
 7. > quit()
+
+http://stackoverflow.com/questions/17696801/express-js-app-listen-vs-server-listen
+
+var express   = require('express');
+var app       = express();
+var socketio  = require('socket.io');
+
+// app.use/routes/etc...
+
+var server    = app.listen(3033);
+var io        = require('socket.io').listen(server);
+
+io.sockets.on('connection', function (socket) {
+  ...
+});
+
+REPLACES:
+
+var express = require('express');
+var app     = express();
+var server  = require('http').createServer(app);
+var io      = require('socket.io').listen(server);
+...
+server.listen(1234);
+
+
