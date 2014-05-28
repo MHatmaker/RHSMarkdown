@@ -10,7 +10,7 @@ var db = monk('localhost:27017/RHSMarkdown');
 /* GET doclist page. */
 exports.getDocs = function(req, res) {
     console.log("docList to hit MongoDB");
-    var collection = db.get('DocCollection');
+    var collection = db.get('docCollection');
     collection.find({},{},function(e,docs){
         console.log('bunch of docs');
         console.log(docs[0]);
@@ -26,7 +26,7 @@ exports.getDoc = function(req, res) {
     console.log('get SpecificDoc, md simple');
     console.log('%s %s %s', req.method, req.url, req.path);
     console.log('req.params.id is %s', req.params.id); //('id'));
-    var collection = db.get('DocCollection');
+    var collection = db.get('docCollection');
     collection.findById(req.params.id,function(err, doc){
 		if (err) res.json(500, err);
 		else if (doc){
