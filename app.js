@@ -10,6 +10,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var http = require('http');
 var path = require('path');
+var socketio  = require('socket.io');
 
 var routes = require('./routes');
 var api = require('./routes/api');
@@ -49,6 +50,21 @@ app.get('/api/MarkdownSimple/:id', api.getDoc);
 // redirect all others to the index (HTML5 history)
 app.get('*', routes.index);
 
+console.log('listen on 3033');
+var server_port = process.env.OPENSHIFT_NODEJS_PORT || 3033;
+var server_ip_address = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1'
+
+console.log('listen on:');
+console.log(server_port);
+console.log(server_ip_address);
+
+var server    = app.listen(server_port, server_ip_address);
+var io        = require('socket.io').listen(server);
+
+io.sockets.on('connection', function (socket) {
+  console.log('io.sockets.on is connecting?');
+});
+
 // Make our db accessible to our router
 app.use(function(req,res,next){
     req.db = db;
@@ -86,5 +102,6 @@ app.use(function(err, req, res, next) {
         error: {}
     });
 });
+
 
 module.exports = app;
