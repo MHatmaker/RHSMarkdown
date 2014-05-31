@@ -45,4 +45,6 @@ var io      = require('socket.io').listen(server);
 ...
 server.listen(1234);
 
+npm list --depth=0
+
 

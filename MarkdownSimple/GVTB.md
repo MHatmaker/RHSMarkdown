@@ -12,7 +12,7 @@ If the project (or other projects) is moved, the IDE needs to be adjusted to ref
 
 Many of the files under GeoVideoToolbar have Log4Delphi support added.  This is accomplished in the .pas files by adding TLoggerUnit and occasionally TLevelUnit to the uses list. Right-clicking on the TLoggerUnit item in the IDE and selecting open file at cursor will open the source file and reveal the path to the LeadTools14.5 source code.
 
-#####RhGeoVideo/RhGeoVideo.dpr
+####RhGeoVideo/RhGeoVideo.dpr
 
 In the .dpr (project) file, LeadTools support is added in the uses list at the top:
 
@@ -68,7 +68,7 @@ This might be modified as:
      {$R IMAGES.RES}
 ```     
      
-#####Toolbar/DlgSelectFeatureInfo.pas   
+####Toolbar/DlgSelectFeatureInfo.pas   
 ArcGIS 10.x no longer has an enum value for esriProductCodeViewer, so it is hard-coded here.  Magic numbers should be removed from source code.
 
 	+  //if licenseType = esriProductCodeViewer then isArcView := True;  
@@ -89,7 +89,7 @@ ArcGIS 10.x no longer has an enum value for esriProductCodeViewer, so it is hard
     +  if licenseType = 100 then isArcView := True;
        licenseInfo := nil;
 ```
-#####Toolbar/DlgSpatialImport.pas
+####Toolbar/DlgSpatialImport.pas
 ```
 
 
@@ -270,7 +270,7 @@ ArcGIS 10.x no longer has an enum value for esriProductCodeViewer, so it is hard
              finally
              
 ```
-#####Toolbar/GeoVideoToolbar.dpr
+####Toolbar/GeoVideoToolbar.dpr
 
 ```
 
@@ -304,7 +304,7 @@ ArcGIS 10.x no longer has an enum value for esriProductCodeViewer, so it is hard
          end.
 
 ```
-#####Toolbar/GeoVideoToolbar_TLB.pas 
+####Toolbar/GeoVideoToolbar_TLB.pas 
 Toolbar/GeoVideoToolbar_TLB.pas appears to have major changes, however, it is mostly rearrangement.  The guids are the same as in the 9.3 version.  The paths have changed for the .olbs in the comments.
 ```
 
@@ -370,7 +370,7 @@ Toolbar/GeoVideoToolbar_TLB.pas appears to have major changes, however, it is mo
      type
  
 ```
-#####ObjGeoVideoUtils.pas, ObjGmlImportHndlr.pas, and ObjViewerUtils.pas
+####ObjGeoVideoUtils.pas, ObjGmlImportHndlr.pas, and ObjViewerUtils.pas
 
 TypInfo is added to the uses list to enable logging a string, instead of an enum for MediaTyp or ImportType:
 
@@ -379,7 +379,7 @@ TypInfo is added to the uses list to enable logging a string, instead of an enum
 	+     [mtString, LayerName, sLctn]));
 
 
-#####Toolbar/ObjDrawSymbol.pas
+####Toolbar/ObjDrawSymbol.pas
 Building for 10.x required adding another ESRI component, esriSystem_TLB to the uses list.
 
 ```
@@ -401,7 +401,7 @@ Building for 10.x required adding another ESRI component, esriSystem_TLB to the 
      function CreatePictureFromSymbol(hDCOld: Integer; var hBmpNew: Integer; pSymbol: ISymbol; lWidth, lHeight: Integer; lGap: Integer = 0): IPictureDisp;
      
 ```
-#####Toolbar/ObjGeoSpatialIndexing.pas
+####Toolbar/ObjGeoSpatialIndexing.pas
 
 Toolbar/ObjGeoSpatialIndexing.pas is the focus of most of the modifications made to get around the race conditions when importing video media. Most of the changes involved:
 
@@ -1245,7 +1245,7 @@ The complete diff for ObjGeoSpatialIndexing.pas follows:
        sDir: string;
        
 ```
-#####Toolbar/ObjGeoVideoUtils.pas
+####Toolbar/ObjGeoVideoUtils.pas
 TypInfo is added to the uses list to enable logging a string, instead of an enum for MediaTyp or ImportType:
 
 	+  mtString := GetEnumName(TypeInfo(TMediaIndexingType),ord(MediaTyp));
@@ -1293,7 +1293,7 @@ TypInfo is added to the uses list to enable logging a string, instead of an enum
        end;
      end;
 ```
-#####Toolbar/ObjGmlImportHndlr.pas
+####Toolbar/ObjGmlImportHndlr.pas
 
 TypInfo is added to the uses list to enable logging a string, instead of an enum for MediaTyp or ImportType:
 
@@ -1424,7 +1424,7 @@ diff('diff.*', 'patch.*')
 
 
 ```
-#####Toolbar/ObjImportXml.pas  
+####Toolbar/ObjImportXml.pas  
 
     function TXmlImport.DoImport: Integer; 
 
@@ -1768,7 +1768,7 @@ LeadTools 13 was upgraded to LeadTools 14.5
      
      { TRHSImageCaptureHndlr }
 ```
-#####Toolbar/ObjMediaExtractorWorkerThread.pas
+####Toolbar/ObjMediaExtractorWorkerThread.pas
  
 ```
 
